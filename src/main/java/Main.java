@@ -1,7 +1,15 @@
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
+        Main main = new Main();
 
+        main.callLargestGap();
+        main.callArrayOfMultiples();
+    }
+
+    private void callLargestGap () {
         Gap gap = new Gap();
 
         int[] array = new int[] { 9, 4, 26, 26, 0, 0, 5, 20, 6, 25, 5 };
@@ -13,5 +21,10 @@ public class Main {
         gap.largestGap(array3);
     }
 
-
+    private void callArrayOfMultiples() {
+        ArrayOfMultiples arrayOfMultiples = new ArrayOfMultiples();
+        arrayOfMultiples.arraysOfMultiples(7, 5);
+        arrayOfMultiples.arraysOfMultiples(12, 10);
+        arrayOfMultiples.arraysOfMultiples(17, 6);
+    }
 }
