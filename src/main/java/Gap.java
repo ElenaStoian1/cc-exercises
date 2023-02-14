@@ -1,43 +1,53 @@
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Objects;
 
 public class Gap {
+    private int gapSize;
+    private int gapFrom;
+    private int gapTo;
 
-    private static final Logger LOGGER = Logger.getLogger(Gap.class.getName());
+    public Gap() {
+    }
 
-    /**
-     * This method returns the largest gap between 2 numbers from an array of integers.
-     * @param array - the array from which the gap will be calculated
-     * @return the value of the largest gap
-     */
-    public int largestGap(int[] array) {
+    public Gap(int gapSize, int gapFrom, int gapTo) {
+        this.gapSize = gapSize;
+        this.gapFrom = gapFrom;
+        this.gapTo = gapTo;
+    }
 
-         int gap = 0;
-         int[] gapBetweenNumbers = new int[2];
+    public int getGapSize() {
+        return gapSize;
+    }
 
-        try {
-            Arrays.sort(array);
+    public void setGapSize(int gapSize) {
+        this.gapSize = gapSize;
+    }
 
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i + 1] - array[i] > gap) {
-                    gap = array[i + 1] - array[i];
-                    gapBetweenNumbers[0] = array[i];
-                    gapBetweenNumbers[1] = array[i + 1];
-                }
-            }
+    public int getGapFrom() {
+        return gapFrom;
+    }
 
-            LOGGER.info("The sorted array is: " + Arrays.toString(array));
-            LOGGER.info("Largest gap is " + gap + " spaces, between " + Arrays.toString(gapBetweenNumbers) + "\n\n");
+    public void setGapFrom(int gapFrom) {
+        this.gapFrom = gapFrom;
+    }
 
-        } catch (NullPointerException nullPointerException) {
-            LOGGER.log(Level.SEVERE, "A Null Pointer Exception has been thrown", nullPointerException);
-        } catch (ArrayStoreException arrayStoreException) {
-            LOGGER.log(Level.SEVERE, "An Array Store Exception has been thrown", arrayStoreException);
-        } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "An exception has been thrown", e);
-        }
+    public int getGapTo() {
+        return gapTo;
+    }
 
-        return gap;
+    public void setGapTo(int gapTo) {
+        this.gapTo = gapTo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Gap gap = (Gap) o;
+        return gapSize == gap.gapSize && gapFrom == gap.gapFrom && gapTo == gap.gapTo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gapSize, gapFrom, gapTo);
     }
 }
